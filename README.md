@@ -1,4 +1,4 @@
-# ikwyl
+# basic structure vue
 
 ## Project setup
 ```
