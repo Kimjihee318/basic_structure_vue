@@ -12,7 +12,7 @@ const router = new VueRouter({
       path: '/',
       component: () => import('@/container/layout/index.vue'),
       meta: {
-        requiresAuth: true
+        requiresAuth: true,
       },
       redirect: '/main',
       children: [
@@ -21,8 +21,8 @@ const router = new VueRouter({
           name: 'main',
           component: () => import('@/views/service/ServiceMain.vue'),
           meta: {
-            requiresAuth: true
-          }
+            requiresAuth: true,
+          },
         },
         // {
         //   path: 'residenceinfo',
@@ -39,10 +39,10 @@ const router = new VueRouter({
           component: {
             render(c) {
               return c('router-view')
-            }
+            },
           },
           meta: {
-            requiresAuth: true
+            requiresAuth: true,
           },
           children: [
             {
@@ -50,37 +50,37 @@ const router = new VueRouter({
               name: 'sys_userinfo',
               component: () => import('@/views/system/SystemUserInfoBoard.vue'),
               meta: {
-                requiresAuth: true
-              }
-            }
-          ]
-        }
-      ]
+                requiresAuth: true,
+              },
+            },
+          ],
+        },
+      ],
     },
     {
       path: '/login',
       name: 'login',
       component: () => import('@/views/service/ServiceLogin.vue'),
       meta: {
-        requiresAuth: false
+        requiresAuth: false,
       },
       beforeEnter(from, to, next) {
         const account = JSON.parse(localStorage.getItem(__C.LOCAL_STORAGE_NAME.ACCOUNT))
 
         if (account) return next('/')
         next()
-      }
+      },
     },
     {
       path: '/test',
       component: () => import('@/views/service/test.vue'),
       meta: {
-        requiresAuth: true
-      }
+        requiresAuth: true,
+      },
     },
     { path: '/404', component: () => import('@/views/service/Service404.vue') },
-    { path: '*', redirect: '/404' }
-  ]
+    { path: '*', redirect: '/404' },
+  ],
 })
 
 router.beforeEach((to, from, next) => {
